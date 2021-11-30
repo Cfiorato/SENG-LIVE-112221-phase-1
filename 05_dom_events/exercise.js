@@ -41,6 +41,9 @@ function renderTask(task) {
   dueDateEl.textContent = task.dueDate;
   completedEl.innerHTML = `<i class="far ${task.complete ? 'fa-check-square' : 'fa-square'} text-4xl text-green-300 cursor-pointer"></i>`;
   task.element = li;
+  completedEl.addEventListener('click', (e) => {
+    toggleComplete(task)
+  })
   return li;
 }
 
@@ -81,3 +84,12 @@ function toggleComplete(task) {
 }
 
 // 🚧 Task 1: add Event Listener/Handler for handling the New Task form submission here
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector('#newTask').addEventListener('submit', (e) => {
+    e.preventDefault()
+    const label = e.target.labelInput.value
+    const dueDate = e.target.dueDateInput.value
+    addTask(todoList, label, new Date(dueDate))
+    e.target.reset() 
+  })
+})

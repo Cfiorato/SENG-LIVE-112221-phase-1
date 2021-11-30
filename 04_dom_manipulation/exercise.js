@@ -1,4 +1,4 @@
-const _____ = 'MAKE SURE TO FILL ME IN!!!';
+const thing = 'MAKE SURE TO FILL ME IN!!!';
 const todoList = [
   {
     label: 'Learn about JS Data Types',
@@ -22,7 +22,7 @@ function getTodoListElement() {
 // Fill in the _____ below with the appropriate code.
 
 function renderTask(task) {
-  const li = _____
+  const li = document.createElement('li')
   li.className = 'flex justify-between';
   li.innerHTML = `
   <span class="task-label">
@@ -36,11 +36,11 @@ function renderTask(task) {
   </span>
   `;
   // target the .task-label and .due-date spans 
-  const taskLabelEl = _____
-  const dueDateEl = _____
+  const taskLabelEl = li.querySelector('.task-label')
+  const dueDateEl =  li.querySelector('.due-date')
   // fill them in with the appropriate content from the task object
-  taskLabelEl._____ = _____;
-  dueDateEl._____ = _____;
+  taskLabelEl.innerText = task.label;
+  dueDateEl.innerText = task.dueDate;
   task.element = li;
   return li;
 }
@@ -48,7 +48,9 @@ function renderTask(task) {
 // 🚧 Task 1: Iterate over the tasks in the todoList, render the task and append it to the todoList element in the DOM
 function loadTodoList(todoList) {
   const target = getTodoListElement();
-  _____
+  todoList.forEach(task => {
+    target.append(renderTask(task))
+  });
 }
 
 loadTodoList(todoList);
@@ -62,14 +64,15 @@ function addTask(todoList, taskLabel) {
   }
   todoList.push(newTask);
   // Render the newTask to the DOM within the #todoList
-  _____
+  const target = getTodoListElement()
+  target.append(renderTask(newTask)) 
   return newTask
 }
 
 // // 👟👟👟 uncomment the lines below to test
 
-// console.log('addTask', addTask(todoList, 'Practice using the filter method'))
-// console.log('todoList after addTask', todoList)
+console.log('addTask', addTask(todoList, 'Practice using the filter method'))
+console.log('todoList after addTask', todoList)
 
 
 
@@ -79,18 +82,18 @@ function addTask(todoList, taskLabel) {
 function removeTask(todoList, taskLabel) {
   const indexToRemove = todoList.findIndex(task => task.label === taskLabel);
   // Remove the task element from the DOM
-  _____
+  todoList[indexToRemove].element.remove()
   return todoList.splice(indexToRemove, 1)[0];
 }
 
 // // 👟👟👟 uncomment the lines below to test
 
-// console.log('addTask', addTask(todoList, 'demo task'));
-// console.log('todoList after addTask', todoList);
-// window.setTimeout(() => {
-//   console.log('removeTask', removeTask(todoList, 'demo task'));
-//   console.log('todoList after removeTask', todoList);
-// }, 2000)
+console.log('addTask', addTask(todoList, 'demo task'));
+console.log('todoList after addTask', todoList);
+window.setTimeout(() => {
+  console.log('removeTask', removeTask(todoList, 'demo task'));
+  console.log('todoList after removeTask', todoList);
+}, 2000)
 
 
 

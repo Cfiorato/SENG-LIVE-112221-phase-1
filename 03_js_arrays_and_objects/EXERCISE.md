@@ -2,6 +2,7 @@
 ### Task 1: `addTask(todoList, task)`
 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 🚧 
 
+
 The `addTask` function should:
 - accept the `todoList` and a `task` as parameters. 
 - create a new task object with a property called task that contains the `task` passed as an argument and a `completed` property should be `false` for newly created tasks.

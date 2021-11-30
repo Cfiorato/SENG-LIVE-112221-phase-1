@@ -186,13 +186,18 @@ const todoList = [
 // 🚧 Task 1: `addTask(todoList, task)`
 
 function addTask(todoList, task) {
-
+  const newTask = {
+    task: task,
+    complete: false
+  }
+  todoList.push(newTask)
+  return newTask
 }
 
 // // 👟👟👟 uncomment the lines below to test
 
-// console.log('addTask', addTask(todoList, 'Practice using the filter method'))
-// console.log('todoList after addTask', todoList)
+console.log('addTask', addTask(todoList, 'Practice using the filter method'))
+console.log('todoList after addTask', todoList)
 
 
 
@@ -201,13 +206,15 @@ function addTask(todoList, task) {
 // 🚧 Task 2: `markComplete(todoList, task)`
 
 function markComplete(todoList, task) {
-
+  const foundTask = todoList.find(t => task === task)
+  foundTask.complete = true
+  return foundTask
 }
 
 // // 👟👟👟 uncomment the lines below to test
 
-// console.log('markComplete', markComplete(todoList, 'Learn about Iteration'))
-// console.log('todoList after markComplete', todoList)
+console.log('markComplete', markComplete(todoList, 'Learn about Iteration'))
+console.log('todoList after markComplete', todoList)
 
 
 
@@ -216,12 +223,15 @@ function markComplete(todoList, task) {
 // 🚧 Task 3: `addDueDateToTask(todoList, task, dueDate)`
 
 function addDueDateToTask(todoList, task, dueDate) {
+  const foundTask = todoList.find(t => task === task)
+  // foundTask[dueDate] = dueDate  
+  return foundTask
 
 }
 
 // // 👟👟👟 uncomment the lines below to test
 
-// console.log('addDueDateToTask', addDueDateToTask(todoList, 'Practice using the filter method', new Date('2021-11-24')))
+console.log('addDueDateToTask', addDueDateToTask(todoList, 'Practice using the filter method', new Date('2021-11-24')))
 // console.log('todoList after addDueDateToTask', todoList)
 
 
